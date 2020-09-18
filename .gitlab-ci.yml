@@ -1,0 +1,11 @@
+stages:
+ - test
+
+test:
+ stage: test
+ image: jussaragranja/robotframework-fedora
+ script:
+  - robot -d results test
+ artifacts:
+   paths:
+     - results
