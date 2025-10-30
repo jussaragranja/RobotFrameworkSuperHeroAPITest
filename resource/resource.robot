@@ -3,7 +3,7 @@ Documentation         https://superheroapi.com/api/
 Library               RequestsLibrary
 Library               Collections
 
-*** Variable ***
+*** Variables ***
 ${URL}      https://superheroapi.com/api/
 ${TOKEN}    3617586838252492
 &{ID_HERO}            ID_Green_Arrow=298    ID_Flash=263    ID_Ant_Man=30
@@ -12,16 +12,16 @@ ${TOKEN}    3617586838252492
 ## Actions
 # Dado
 Que esteja conectado na SuperHeroAPI
-    Create Session    superheroapi    ${URL}/${TOKEN}
+    Create Session    superheroapi    ${URL}/${TOKEN}   verify=True
 
 # QUANDO
 requisitar o histórico do super herói "Green Arrow"
-    ${RESPONSE}     Get Request    superheroapi    ${ID_HERO.ID_Green_Arrow}
+    ${RESPONSE}     GET On Session    superheroapi    ${ID_HERO.ID_Green_Arrow}
     Set Test Variable    ${RESPONSE}
 
 requisitar as estatísticas de poder dos super heróis "Flash" e "Ant-Man"
-    ${RESPONSE_FLASH}     Get Request    superheroapi    ${ID_HERO.ID_Flash}/powerstats
-    ${RESPONSE_ANT_MAN}   Get Request    superheroapi    ${ID_HERO.ID_Ant_Man}/powerstats
+    ${RESPONSE_FLASH}     GET On Session    superheroapi    ${ID_HERO.ID_Flash}/powerstats
+    ${RESPONSE_ANT_MAN}   GET On Session    superheroapi    ${ID_HERO.ID_Ant_Man}/powerstats
     Set Test Variable     ${RESPONSE_FLASH}
     Set Test Variable     ${RESPONSE_ANT_MAN}
 
