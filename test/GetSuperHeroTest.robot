@@ -3,7 +3,7 @@ Documentation   Suíte de testes
 Resource        ../resource/resource.robot
 Resource        ../resource/BDD.robot
 
-*** Test Case ***
+*** Test Cases ***
 
 Cenário 01: Consultar a ficha de um super herói (/id)
     Dado que esteja conectado na SuperHeroAPI
