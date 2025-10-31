@@ -4,8 +4,11 @@ stages:
 test:
  stage: test
  image: jussaragranja/robotframework-fedora
+ before_script:
+  - pip install -r requirements.txt
  script:
   - robot -d results test
  artifacts:
    paths:
      - results
+   expire_in: 1 week
